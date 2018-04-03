@@ -1,6 +1,6 @@
 """set parameters of netual network"""
 
-class paramster(object):
+class parameter(object):
     def __init__(self):
         #default
         self.num_units = 32
@@ -15,11 +15,25 @@ class paramster(object):
         self.set_parameter()
 
     def set_parameter(self):
-        parameter = {}
         with open('./neural_network.conf', 'r') as f:
             for eachline in f:
                 this_line = eachline.strip().split(" ")
                 if this_line[0][0] != '#':
-                    parameter[this_line[0]] = this_line[1]
+                    if 'num_units' == this_line[0][0]:
+                        self.num_units = int(this_line[0][1])
+                    if 'num_layers' == this_line[0][0]:
+                        self.num_layers = int(this_line[0][1])
+                    if 'num_encoder_layers' == this_line[0][0] and this_line[0][1] != 'None':
+                        self.num_encoder_layers = int(this_line[0][1])
+                    if 'num_decoder_layers' == this_line[0][0] and this_line[0][1] != 'None':
+                        self.num_decoder_layers = int(this_line[0][1])
+                    if 'encoder_type' == this_line[0][0]:
+                        self.encoder_type = this_line[0][1]
+                    if 'residual' == this_line[0][0] and this_line[0][1] == 'True':
+                        self.residual = True
+                    if 'time_major' == this_line[0][0] and this_line[0][1] == 'True':
+                        self.time_major = True
+                    if 'num_embeddings_partitions' == this_line[0][0]:
+                        self.num_embeddings_partitions = int(this_line[0][1])
 
 
