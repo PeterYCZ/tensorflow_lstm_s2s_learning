@@ -4,7 +4,7 @@ import sys
 
 import numpy as np
 import tensorflow as tf
-from .conf import Parameter
+from conf.Parameter import Parameter
 
 def main():
     parameter = Parameter()
