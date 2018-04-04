@@ -1,6 +1,6 @@
 """set parameters of netual network"""
 
-class parameter(object):
+class Parameter(object):
     def __init__(self):
         #default
         self.num_units = 32
