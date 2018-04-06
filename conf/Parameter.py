@@ -3,14 +3,29 @@
 class Parameter(object):
     def __init__(self):
         #default
+        #network
         self.num_units = 32
         self.num_layers = 2
         self.num_encoder_layers = None
         self.num_decoder_layers = None
+        self.unit_type = 'lstm'
         self.encoder_type = 'uni'
         self.residual = False
         self.time_major = False
         self.num_embeddings_partitions = 0
+        self.dropout = 0.2
+        #train
+        self.optimizer = 'sgd',
+        self.num_train_steps = 12000,
+        self.batch_size = 128,
+        self.init_op = 'uniform',
+        self.init_weight = 0.1,
+        self.max_gradient_norm = 5.0,
+        self.learning_rate=1.0,
+        self.warmup_steps = 0,
+        self.warmup_scheme = "t2t",
+        self.decay_scheme = "",
+        self.colocate_gradients_with_ops = True,
         #users set parameter
         self.set_parameter()
 
